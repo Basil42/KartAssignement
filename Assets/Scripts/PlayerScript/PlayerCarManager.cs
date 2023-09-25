@@ -21,7 +21,7 @@ public class PlayerCarManager : MonoBehaviour, IPlayerDataReceiver
     {
         _playerData = data;
 #if UNITY_EDITOR
-        SetCarAsControlled(Instantiate(defaultCar));
+        SetCarAsControlled(Instantiate(defaultCar,transform));
 #endif
     }
 }
