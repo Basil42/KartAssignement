@@ -127,4 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAcceleration: 5
   breakingPower: 5
-  maxTurningPower: 5
+  maxTurningPower: 90

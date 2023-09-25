@@ -61,7 +61,7 @@ public class CarController : MonoBehaviour
         _rb.drag = _neutralDrag + breakingPower * value.Get<float>();//inconsistent with the rest but I'm not set on a way to deal with this
     }
 
-    [SerializeField] private float maxTurningPower = 5f;
+    [SerializeField] private float maxTurningPower = 20f;
     private float _currentTurningInput;
     [SerializeField] private PlayerData _owningPlayer;
 
@@ -75,6 +75,6 @@ public class CarController : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.AddRelativeForce(_currentAccelerationInput * maxAcceleration * Vector2.up);
-        _rb.MoveRotation(_currentTurningInput * maxTurningPower);
+        _rb.MoveRotation(_rb.rotation - (_currentTurningInput * maxTurningPower * Time.fixedDeltaTime));
     }
 }

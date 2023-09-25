@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "break",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "81cf1811-ba4e-4005-b5a3-2eedc6af7838",
                     "expectedControlType": "Button",
                     "processors": "",
