@@ -329,10 +329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1165190365956468468, guid: 982b53bcf7683f3499f7bea9d14a5fea, type: 3}
-  playerCount: 2
-  player1Scheme: Player 1
+  playerCount: 1
+  firstKeyboardPlayerScheme: Player 1
   extraKeyboardPlayerScheme: Player 2
-  extraPlayerScheme: Gamepad
 --- !u!4 &1553090043
 Transform:
   m_ObjectHideFlags: 0

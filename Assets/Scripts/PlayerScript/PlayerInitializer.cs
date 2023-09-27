@@ -17,15 +17,16 @@ public class PlayerInitializer : MonoBehaviour
                 InitializePlayers();//this will done after people join with devices
         }
 
-        private void InitializePlayers()
+        private void InitializePlayers()//TODO: Joining System 
         {
                 Assert.IsTrue(playerCount > 0);
                 int playerIndex = 0;
                 var player1 =  PlayerInput.Instantiate(playerPrefab, playerIndex, firstKeyboardPlayerScheme, -1, Keyboard.current);
                 player1.GetComponent<PlayerDataRefBroadcaster>().Data =
                         new PlayerData(playerIndex, firstKeyboardPlayerScheme, player1);
+                if (playerCount == 1) return;
                 playerIndex++;
-                var player2 = PlayerInput.Instantiate(playerPrefab, 1, extraKeyboardPlayerScheme, -1, Keyboard.current);
+                var player2 = PlayerInput.Instantiate(playerPrefab, playerIndex, extraKeyboardPlayerScheme, -1, Keyboard.current);
                 player2.GetComponent<PlayerDataRefBroadcaster>().Data =
                         new PlayerData(playerIndex, extraKeyboardPlayerScheme, player2);
 
