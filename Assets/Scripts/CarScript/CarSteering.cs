@@ -13,14 +13,13 @@ public class CarSteering : MonoBehaviour
     [FormerlySerializedAs("maxTurningPower")] [SerializeField] private float maxTurningForce = 90f;
     [SerializeField] private float turningPower = 10f;
     private float _currentTurningInput;
-    private float _maxSteeringAngle = 45f;
+    [SerializeField] private float maxSteeringAngle = 45f;
     private const float SteeringAnglePadding = 0.1f;
 
     private void Awake()
     {
         Assert.IsNotNull(frontContactRb);
         _rb = GetComponent<Rigidbody2D>();
-        _maxSteeringAngle = frontContactRb.GetComponent<HingeJoint2D>().limits.max- SteeringAnglePadding;
     }
 
     [UsedImplicitly]
@@ -33,6 +32,6 @@ public class CarSteering : MonoBehaviour
     {
         //TODO: clamping and resetting to neutral, pad the allowed steering to avoid the hinge "launching" the car
         var contactRotation =  frontContactRb.rotation - (_currentTurningInput * maxTurningForce * Time.fixedDeltaTime);
-        frontContactRb.MoveRotation(Mathf.Clamp(contactRotation, -_maxSteeringAngle, _maxSteeringAngle));
+        frontContactRb.MoveRotation(contactRotation);//this is of course a world rotation and is incorrect
     }
 }
