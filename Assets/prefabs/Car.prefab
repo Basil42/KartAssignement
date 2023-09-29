@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1469912381188137910}
   - component: {fileID: 6768456615959668150}
   - component: {fileID: 1523992220767029689}
-  - component: {fileID: 3009554740665236717}
   - component: {fileID: 7111328607771101523}
+  - component: {fileID: 8305719956578728327}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -143,23 +143,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactPatches:
-  - {fileID: 5320309126338928212}
-  - {fileID: 6024111643732060317}
-  maxAcceleration: 200
-  maxForwardSpeedTransfer: 40
---- !u!114 &3009554740665236717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739374187996971288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68ad9029603458d859007ea0386726e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  breakingPower: 30
+  - transform: {fileID: 5320309126338928212}
+    directionalGripCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.0041656494
+        value: 0.81367874
+        inSlope: -2.1549826
+        outSlope: -2.1549826
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.25162548
+        value: 0.26245332
+        inSlope: -0.91775304
+        outSlope: -0.91775304
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.14979859
+      - serializedVersion: 3
+        time: 0.9833374
+        value: 0.035377502
+        inSlope: -0.31033498
+        outSlope: -0.31033498
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    lateralSpeedGripLimit: 200
+  - transform: {fileID: 6024111643732060317}
+    directionalGripCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.0041656494
+        value: 0.81367874
+        inSlope: -0.22962318
+        outSlope: -0.22962318
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8557896
+        value: 0.6162131
+        inSlope: -0.91775304
+        outSlope: -0.91775304
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.14979859
+      - serializedVersion: 3
+        time: 0.9833374
+        value: 0.035377502
+        inSlope: -4.553866
+        outSlope: -4.553866
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    lateralSpeedGripLimit: 200
 --- !u!114 &7111328607771101523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,10 +225,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a488c8655644eb8565a3b55d384eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontContactRb: {fileID: 0}
-  maxTurningForce: 180
-  turningPower: 180
-  maxSteeringAngle: 45
+  frontContactRb: {fileID: 5320309126338928212}
+  maxTurningForce: 90
+  maxSteeringAngle: 30
+--- !u!114 &8305719956578728327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739374187996971288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81f84f8848b470f90c87ec41747aecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drivingPatches:
+  - {fileID: 5320309126338928212}
+  maxAcceleration: 60
 --- !u!1 &2086138902043517269
 GameObject:
   m_ObjectHideFlags: 0
