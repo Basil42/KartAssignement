@@ -37,7 +37,6 @@ public class CarPhysics : MonoBehaviour
         var transferRatio = patch.directionalGripCurve.Evaluate(lateralSpeed.magnitude / patchVelocity.magnitude);
         //using straight up mass here is incorrect but the illusion is good enough
         _rb.AddForceAtPosition(Vector2.ClampMagnitude(-lateralSpeed * (transferRatio * _rb.mass), patch.lateralSpeedGripLimit),patchPosition,ForceMode2D.Force);
-        Debug.Log((-lateralSpeed * (transferRatio * _rb.mass)).magnitude);
     }
 }
 [Serializable]
