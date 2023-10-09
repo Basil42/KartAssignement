@@ -16,7 +16,9 @@ GameObject:
   - component: {fileID: 7111328607771101523}
   - component: {fileID: 8305719956578728327}
   - component: {fileID: 1574897740960775712}
-  m_Layer: 0
+  - component: {fileID: -1942611906623522669}
+  - component: {fileID: -8874689828518643946}
+  m_Layer: 3
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,6 +291,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.29}
   m_EdgeRadius: 0
+--- !u!114 &-1942611906623522669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739374187996971288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126b8ca46e2f4a88856bc2fed4ab1572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8874689828518643946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739374187996971288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5095f3c1f2b44bb49803857e7e3715f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2086138902043517269
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6694167606592851302}
   - component: {fileID: 1635583270755139099}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2338108368107089745}
   - component: {fileID: 3654148300437423673}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7818813211619470887}
   - component: {fileID: 3397086122676726429}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5320309126338928212}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: frontContactPatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6024111643732060317}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: backContactPatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

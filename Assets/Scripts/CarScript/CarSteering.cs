@@ -36,10 +36,12 @@ public class CarSteering : MonoBehaviour
         frontContact.Rotate(new Vector3(0f, 0f, turnRotation));
         
         var localRot = frontContact.localEulerAngles;
-        if (Mathf.Abs(currentRotationAngle) > maxSteeringAngle)
+        #if UNITY_EDITOR
+        if (Mathf.Abs(currentRotationAngle) > maxSteeringAngle +0.1f)
         {
             Debug.LogError("forbidden rotation");
         }
+        #endif
         // //avoiding problems with euler angles
         // if (localRot.z < 0f) localRot.z = 360 + localRot.z;
         // localRot.z = localRot.z > 180f
