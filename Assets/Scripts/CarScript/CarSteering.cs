@@ -1,5 +1,6 @@
 using System;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -26,16 +27,24 @@ public class CarSteering : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-        frontContact.Rotate(new Vector3(0f, 0f, -(_currentTurningInput * maxTurningForce * Time.fixedDeltaTime)));
+        var targetAngle = -_currentTurningInput * maxSteeringAngle;
+        var maxFrameRotationAngle = maxTurningForce * Time.fixedDeltaTime;
+        var currentRotationAngle = frontContact.localEulerAngles.z;
+        currentRotationAngle = currentRotationAngle > 180f ? currentRotationAngle - 360f : currentRotationAngle;
+        var angleToRotate = targetAngle - currentRotationAngle;
+        var turnRotation = Mathf.Clamp(angleToRotate,-maxFrameRotationAngle,maxFrameRotationAngle);
+        frontContact.Rotate(new Vector3(0f, 0f, turnRotation));
         
         var localRot = frontContact.localEulerAngles;
-        
-        //avoiding problems with euler angles
-        if (localRot.z < 0f) localRot.z = 360 + localRot.z;
-        localRot.z = localRot.z > 180f
-            ? Mathf.Max(localRot.z, 360 - maxSteeringAngle)
-            : Mathf.Min(localRot.z, maxSteeringAngle);
-        frontContact.localEulerAngles = localRot;
+        if (Mathf.Abs(currentRotationAngle) > maxSteeringAngle)
+        {
+            Debug.LogError("forbidden rotation");
+        }
+        // //avoiding problems with euler angles
+        // if (localRot.z < 0f) localRot.z = 360 + localRot.z;
+        // localRot.z = localRot.z > 180f
+        //     ? Mathf.Max(localRot.z, 360 - maxSteeringAngle)
+        //     : Mathf.Min(localRot.z, maxSteeringAngle);
+        // frontContact.localEulerAngles = localRot;
     }
 }

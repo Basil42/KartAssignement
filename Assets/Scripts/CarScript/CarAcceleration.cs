@@ -16,7 +16,7 @@ public class CarAcceleration : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-    [UsedImplicitly]
+    [UsedImplicitly]//TODO: backward acceleration
     private void OnAccelerate(InputValue value)
     {
         _currentAccelerationInput =  value.Get<float>();
