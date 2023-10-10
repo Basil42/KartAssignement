@@ -2,7 +2,6 @@ using System;
 using track;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerDataRefBroadcaster))]
 public class PlayerCarManager : MonoBehaviour, IPlayerDataReceiver
