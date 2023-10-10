@@ -16,7 +16,7 @@ public class PlayerCarManager : MonoBehaviour, IPlayerDataReceiver
     private void SetCarAsControlled(CarController car)
     {
         ControlledCar = car;
-        car.OwningPlayer = _playerData;
+        ControlledCar.GetComponent<PlayerDataRefBroadcaster>().Data = _playerData;
     }
 
     public void OnPlayerDataReady(PlayerData data)
@@ -27,7 +27,7 @@ public class PlayerCarManager : MonoBehaviour, IPlayerDataReceiver
         try
         {
             SetCarAsControlled(Instantiate(defaultCar,
-                CarSpawnPoint.SpawnPoints[data.PlayerIndex].position,
+                CarSpawnPoint.SpawnPoints[data.playerIndex].position,
                 quaternion.identity,
                 this.transform)); //here you might specify a starting rotation depending on level
         }

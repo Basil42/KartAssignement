@@ -24,6 +24,7 @@ public class PlayerInitializer : MonoBehaviour
                 var player1 =  PlayerInput.Instantiate(playerPrefab, playerIndex, firstKeyboardPlayerScheme, -1, Keyboard.current);
                 player1.GetComponent<PlayerDataRefBroadcaster>().Data =
                         new PlayerData(playerIndex, firstKeyboardPlayerScheme, player1);
+                
                 if (playerCount == 1) return;
                 playerIndex++;
                 var player2 = PlayerInput.Instantiate(playerPrefab, playerIndex, extraKeyboardPlayerScheme, -1, Keyboard.current);

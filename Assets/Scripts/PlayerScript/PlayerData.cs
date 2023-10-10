@@ -1,21 +1,32 @@
 using System.Collections.Generic;
+using LevelManagement;
 using track;
 using UnityEngine.InputSystem;
-public struct PlayerData
+public class PlayerData//This isn't ideal and should be safer being a scriptable object
 {
-     private int _playerIndex;
-     private string _controlScheme;
      public PlayerInput PlayerInput;
-     public List<Checkpoint> CurrentCheckPoint;
+     public int LapCount;
+     public int Points;
+     public int playerIndex { get; }
 
-     public int PlayerIndex => _playerIndex;
-     public string ControlScheme => _controlScheme;
+     public string controlScheme { get; }
 
      public PlayerData(int playerIndex, string controlScheme, PlayerInput input)
      {
-          _playerIndex = playerIndex;
-          _controlScheme = controlScheme;
+          this.playerIndex = playerIndex;
+          this.controlScheme = controlScheme;
           PlayerInput = input;
-          CurrentCheckPoint = new List<Checkpoint>();
+          LapCount = 0;
+          Points = 0;
+          ScoreManager.RaceFinished += OnRaceFinished;
+     }
+
+     ~PlayerData()
+     {
+          ScoreManager.RaceFinished -= OnRaceFinished;
+     }
+     private void OnRaceFinished()
+     {
+          LapCount = 0;
      }
 }

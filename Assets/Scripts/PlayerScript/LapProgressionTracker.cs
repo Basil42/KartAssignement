@@ -1,26 +1,39 @@
 using System;
+using System.Collections.Generic;
 using track;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerDataRefBroadcaster),typeof(Collider2D))]
-public class LapProgressionTracker : MonoBehaviour, IPlayerDataReceiver
+public class LapProgressionTracker : MonoBehaviour, IPlayerDataReceiver, ICheckpointDataReceiver, IStartLineDataReceiver
 {
     private PlayerData _playerData;
-    private Checkpoint _currentCheckPoint;
+    private HashSet<Checkpoint> _passedCheckpoints = new HashSet<Checkpoint>();
 
     public void OnPlayerDataReady(PlayerData data)
     {
         _playerData = data;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    
+
+    public void OnCheckpointPassed(Checkpoint cp)
     {
-        if ((other.gameObject.layer == 6))
+        _passedCheckpoints.Add(cp);//if the cp is already in the set it will simply be ignored
+    }
+
+    public static event Action<PlayerData> LapCompleted;
+    public void OnStartLinePassed(HashSet<Checkpoint> requiredCPs)
+    {
+        if (requiredCPs.SetEquals(_passedCheckpoints))
         {
-            var cp = other.GetComponent<Checkpoint>();
-            _playerData.CurrentCheckPoint.Add(cp);
-            return;
+            _playerData.LapCount++;
+            _passedCheckpoints.Clear();
+            LapCompleted?.Invoke(_playerData);
         }
-        Debug.LogError("Unhandled trigger type", gameObject);
+        //the player passed the start line without passing all the checkpoints
+        //we could have feedback depending on circumstances, ignoring it for this exercice
     }
 }
+
+
+

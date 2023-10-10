@@ -5,12 +5,12 @@ using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
 
-public class CarController : MonoBehaviour
+public class CarController : MonoBehaviour, IPlayerDataReceiver
 {
-    private PlayerData _owningPlayer;
-    public PlayerData OwningPlayer
+    public PlayerData owningPlayer { get; private set; }
+
+    public void OnPlayerDataReady(PlayerData data)
     {
-        get => _owningPlayer;
-        set => _owningPlayer = value;
+        owningPlayer = data;
     }
 }

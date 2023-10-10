@@ -1,10 +1,8 @@
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.InputSystem;
 public class PlayerDataRefBroadcaster : MonoBehaviour
 {
-    [SerializeField] private PlayerData _data;
+    private PlayerData _data;
 
     public PlayerData Data
     {

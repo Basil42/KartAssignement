@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace track
@@ -6,6 +7,19 @@ namespace track
     [RequireComponent(typeof(Collider2D))]
     public class Checkpoint : MonoBehaviour
     {
-        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            other.GetComponent<ICheckpointDataReceiver>().OnCheckpointPassed(this);
+            //if I do need multiple receiver
+            // foreach (var receiver in other.GetComponents<ICheckpointDataReceiver>())
+            // {
+            //     receiver.OnCheckpointPassed(this);
+            // }
+        }
+    }
+    public interface ICheckpointDataReceiver
+    {
+        public void OnCheckpointPassed(Checkpoint cp);
+
     }
 }
