@@ -1,12 +1,26 @@
 # KartAssignement
- Assignement for a C#/unity course
+ Assignement for C#/unity course
+ 
+ Nicolas Gerard
  
   About:
   
-  simple little racing game, played with 4 keys, you can accelerate, turn and break.
+  simple little racing game, played with 4 keys, you can accelerate, turn and break. Collision prevents the player from going out of the track and into each other.
   
+  
+ To play:
+ 
+	UNITY VERSION 2022.3.8f1
+    
+	start play mode from the main menu and select the number of player.
+	first player plays with wasd second player with arrow keys
+ 
+	technically the laps can be completed in either direction
+ 
+Code notes:
+
   The cars have a forward and back contact patch with slightly different physics behaviors, making the car drift in sharp turn 
-  (the approximation I used is from https://www.youtube.com/watch?v=CdPYlj5uZeI&t=6s&ab_channel=ToyfulGames and isn't very satisfying at low speeds)
+  (the approximation I used isn't very satisfying at low speeds)
   
   Each player has a struct with it's data and an input receiver that persists scene to scene and forwards it to the car 
   (this design is a workaround a previously encountered bug, I should have the input reciever on the car directly and use C# events instead of messages)
@@ -18,12 +32,9 @@
   
   There are a few C# static events here and there that create coupling, but are more convenient than UnityEvent.
   
+  Inspirations:
   
- To play:
- start play mode from the main menu and select the number of player.
- first player plays with wasd second player with arrow keys
- 
- technically the laps can be completed in either direction
- 
-
+  Unity doc for the new input system (sadly got me into multiple traps)
+  A conversation with my brother about motorcycle grip dynamics
+  this video https://www.youtube.com/watch?v=CdPYlj5uZeI&t=6s&ab_channel=ToyfulGames , for a game approximation of grip that doesn't rely on redistributing normal forces on 4 contact patches
  

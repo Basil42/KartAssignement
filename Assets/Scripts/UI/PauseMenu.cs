@@ -11,11 +11,13 @@ namespace UI
     {
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private InputAction pauseAction;
+        [SerializeField] private Canvas pauseMenuUI;
         private void Awake()
         {
             Assert.IsNotNull(levelManager);
+            Assert.IsNotNull(pauseMenuUI);
             pauseAction.performed += ProcessPauseAction;
-            gameObject.SetActive(false);
+            pauseMenuUI.gameObject.SetActive(false);
         }
 
         private void OnDestroy()
@@ -25,19 +27,20 @@ namespace UI
 
         private void ProcessPauseAction(InputAction.CallbackContext obj)
         {
-            if(gameObject.activeSelf)Pause();
+            Debug.Log("processing pause input");
+            if(pauseMenuUI.gameObject.activeSelf)Pause();
             else Resume();
         }
 
         public void Resume()
         {
-            gameObject.SetActive(false);
+            pauseMenuUI.gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
 
         public void Pause()
         {
-            gameObject.SetActive(true);
+            pauseMenuUI.gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
 

@@ -36,6 +36,13 @@ namespace LevelManagement
         }
         public LevelData GetCurrentLevelData()
         {
+            #if UNITY_EDITOR
+            if (CurrentLevelIndex == 0)
+            {
+                Debug.LogWarning("invalid current level index, attempting to return first level");
+                return levelList[0];
+            }
+            #endif
             return levelList[CurrentLevelIndex - 1];
         }
 
