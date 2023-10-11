@@ -1,12 +1,21 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 namespace LevelManagement
 {
     public class ScoreManager : MonoBehaviour//Per scene singleton
     {
+        [SerializeField] private LevelManager levelManager;
         public static event Action RaceFinished;
+
+        private void Awake()
+        {
+            Assert.IsNotNull(levelManager);
+        }
+
         private void OnEnable()
         {
             LapProgressionTracker.LapCompleted += OnLapCompleted;
@@ -22,16 +31,16 @@ namespace LevelManagement
         // ReSharper restore RedundantDefaultMemberInitializer
         private void OnLapCompleted(PlayerData obj)
         {
-            LevelData levelData = LevelData.current;
+            LevelData levelData = levelManager.GetCurrentLevelData();
             Assert.IsNotNull(levelData);
             if (_isRaceOver) return;
-            if (obj.LapCount >= levelData.lapCount)//a player finished the level
+            if (obj.LapCount >= levelData.LapCount)//a player finished the level
             {
-                _isRaceOver = _nextPlaceToFinish >= levelData.pointValues.Count || levelData.stopAfterFirstPlace;
+                _isRaceOver = _nextPlaceToFinish >= levelData.PointValues.Count || levelData.StopAfterFirstPlace;
                 obj.Points += !_isRaceOver
-                    ? levelData.pointValues[_nextPlaceToFinish++]
-                    : levelData.pointValues[^1];
-                if(levelData.stopAfterFirstPlace || _isRaceOver)RaceFinished?.Invoke();
+                    ? levelData.PointValues[_nextPlaceToFinish++]
+                    : levelData.PointValues[^1];
+                if(levelData.StopAfterFirstPlace || _isRaceOver)RaceFinished?.Invoke();
             }
         }
     }

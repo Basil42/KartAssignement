@@ -1,4 +1,3 @@
-using System;
 using LevelManagement;
 using TMPro;
 using UnityEngine;
@@ -8,7 +7,8 @@ namespace UI
     public class LapDisplay : MonoBehaviour
     {
         private TMP_Text _display;
-
+        [SerializeField] private LevelManager levelManager;
+        
         private void Awake()
         {
             _display = GetComponent<TMP_Text>();
@@ -16,7 +16,7 @@ namespace UI
 
         private void Start()
         {
-            _display.text = $"{_currentLap}/{LevelData.current.lapCount}";
+            _display.text = $"lap : {_currentLap}/{levelManager.GetCurrentLevelData().LapCount}";
 
         }
 
@@ -38,7 +38,7 @@ namespace UI
         {
             if (obj.LapCount >= _currentLap)
             {
-                _display.text = $"{++_currentLap}/{LevelData.current.lapCount}";
+                _display.text = $"{++_currentLap}/{levelManager.GetCurrentLevelData().LapCount}";
             }
         }
     }

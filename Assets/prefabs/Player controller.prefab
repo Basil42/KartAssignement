@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6733308580646100816}
   - component: {fileID: 7410130452352913291}
   - component: {fileID: 7502744287627834081}
+  - component: {fileID: 6012716437763108017}
   - component: {fileID: 5056289476449314994}
   m_Layer: 0
   m_Name: Player controller
@@ -59,6 +60,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCar: {fileID: 6768456615959668150, guid: d0c1543807a97a6418d8151210641e74, type: 3}
+--- !u!114 &6012716437763108017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165190365956468468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3f4cdd2e614e80a9dddda5fc90e111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carManager: {fileID: 7502744287627834081}
 --- !u!114 &5056289476449314994
 MonoBehaviour:
   m_ObjectHideFlags: 0

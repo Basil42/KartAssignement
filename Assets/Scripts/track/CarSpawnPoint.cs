@@ -7,7 +7,8 @@ namespace track
 {
     public class CarSpawnPoint : MonoBehaviour
     {
-        public static List<Transform> SpawnPoints = new List<Transform>();
+
+        public static List<Transform> SpawnPoints = new ();
 
         [RuntimeInitializeOnLoadMethod]
         private static void StartupChecks()
@@ -27,5 +28,6 @@ namespace track
                 Debug.LogError("A spawn point was unexpectedly removed from or not added to the list");
             }
         }
+
     }
 }

@@ -1,16 +1,32 @@
 using System;
+using LevelManagement;
 using track;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerDataRefBroadcaster))]
 public class PlayerCarManager : MonoBehaviour, IPlayerDataReceiver
 {
     public CarController ControlledCar { get; private set; }
     private PlayerData _playerData;
-#if UNITY_EDITOR
+
     [SerializeField] private CarController defaultCar;
-#endif
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
+    }
+
+    private void SceneManagerOnsceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        SpawnCar();
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= SceneManagerOnsceneLoaded;
+    }
 
     private void SetCarAsControlled(CarController car)
     {
@@ -21,22 +37,22 @@ public class PlayerCarManager : MonoBehaviour, IPlayerDataReceiver
     public void OnPlayerDataReady(PlayerData data)
     {
         _playerData = data;
-        
-#if UNITY_EDITOR
+    }
+    private void SpawnCar()
+    {
+
         try
         {
             SetCarAsControlled(Instantiate(defaultCar,
-                CarSpawnPoint.SpawnPoints[data.playerIndex].position,
-                quaternion.identity,
-                this.transform)); //here you might specify a starting rotation depending on level
+                CarSpawnPoint.SpawnPoints[_playerData.playerIndex].position,
+                quaternion.identity)); //here you might specify a starting rotation depending on level
         }
         catch(ArgumentOutOfRangeException e)
         {
             Debug.LogException(e,this);
-            SetCarAsControlled(Instantiate(defaultCar,
-                transform));//attempting to fallback to arbitrary position
+            SetCarAsControlled(Instantiate(defaultCar));//attempting to fallback to arbitrary position
         }
         
-#endif
+
     }
 }
