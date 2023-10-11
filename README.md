@@ -3,6 +3,8 @@
  
  Nicolas Gerard
  
+ NOTE TO SEBASTIAN: the game is missing required features like the multiple levels, powerups and some assets to dress it up, you can save time and fail it, I'll finish it for the next grading opoportunity.
+ 
   About:
   
   simple little racing game, played with 4 keys, you can accelerate, turn and break. Collision prevents the player from going out of the track and into each other.
