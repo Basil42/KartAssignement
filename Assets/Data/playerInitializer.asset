@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: playerInitializer
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1165190365956468468, guid: 982b53bcf7683f3499f7bea9d14a5fea, type: 3}
-  firstKeyboardPlayerScheme: Player1
-  extraKeyboardPlayerScheme: Player2
+  firstKeyboardPlayerScheme: Player 1
+  extraKeyboardPlayerScheme: Player 2

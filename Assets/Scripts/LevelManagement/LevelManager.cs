@@ -29,6 +29,11 @@ namespace LevelManagement
             SceneManager.LoadScene(levelList[CurrentLevelIndex++].SceneName, LoadSceneMode.Single);
         }
 
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+            CurrentLevelIndex = 0;
+        }
         public LevelData GetCurrentLevelData()
         {
             return levelList[CurrentLevelIndex - 1];

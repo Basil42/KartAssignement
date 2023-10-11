@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef700e39a9545f59117c76bc708c5a6, type: 3}
   m_Name: FirstLevel
   m_EditorClassIdentifier: 
-  _stopAfterFirstPlace: 1
-  _lapCount: 3
-  _pointValues: 05000000
+  <StopAfterFirstPlace>k__BackingField: 1
+  <LapCount>k__BackingField: 3
+  <SceneName>k__BackingField: level1
+  <PointValues>k__BackingField: 05000000
